@@ -19,23 +19,23 @@ export class CoursesComponent implements OnInit {
   // coursesService: CoursesService;
 
   constructor(
-    private coursesService: CoursesService,
-    public dialog: MatDialog
+	private coursesService: CoursesService,
+	public dialog: MatDialog
   ) {
-    //this.coursesService = new CoursesService();
-    //this.courses = [];
-    this.courses$ = this.coursesService.list().pipe(
-      catchError(error => {
-        this.onError('Error ao carregar Cursos');
-        return of([]);
-      })
-    );
+	//this.coursesService = new CoursesService();
+	//this.courses = [];
+	this.courses$ = this.coursesService.list().pipe(
+	  catchError(error => {
+		  this.onError('Erro ao carregar Cursos');
+		  return of([]);
+	  })
+	);
   }
 
   onError(errorMsg: string) {
-    this.dialog.open(ErrorDialogComponent, {
-      data: errorMsg,
-    });
+	this.dialog.open(ErrorDialogComponent, {
+	  data: errorMsg,
+	});
   }
 
   ngOnInit(): void {}
